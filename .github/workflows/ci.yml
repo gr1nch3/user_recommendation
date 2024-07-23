@@ -27,8 +27,8 @@ jobs:
       - name: Build the Stack
         run: docker compose build web
 
-      - name: Start pg
-        run: docker compose up db
+      # - name: Start pg
+        # run: docker compose run db
 
       - name: Run DB Migrations
         run: docker compose run web python manage.py migrate
