@@ -30,7 +30,7 @@ jobs:
         run: docker compose build web
 
       - name: Run DB Migrations
-        run: docker compose exec web python manage.py migrate
+        run: docker compose run web python manage.py migrate
 
       - name: Run Django Tests
         run: docker compose exec web python manage.py test
