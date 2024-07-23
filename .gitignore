@@ -1,0 +1,12 @@
+# Python Related
+venv
+venv/*
+poetry.lock
+
+# Project Related
+.env
+challenge/*
+challenge/240715 Coding Challenge.pdf
+
+
+

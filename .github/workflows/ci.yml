@@ -1,0 +1,32 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test-django:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Build the Stack
+        run: docker compose build web
+
+      - name: Run DB Migrations
+        run: docker compose exec web python manage.py migrate
+
+      - name: Run Django Tests
+        run: docker compose exec web python manage.py pytest
+
+      - name: Tear down the Stack
+        run: docker compose down
+
