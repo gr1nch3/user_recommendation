@@ -5,6 +5,7 @@ services:
     image: postgres:latest
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    hostname: db
     # environment:
     #   - POSTGRES_HOST=${POSTGRES_HOST}
     #   - POSTGRES_PORT=${POSTGRES_PORT}
