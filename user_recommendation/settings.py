@@ -95,7 +95,7 @@ WSGI_APPLICATION = "user_recommendation.wsgi.application"
 
 DATABASES = {
     "default": env.db(
-        "POSTGRES_URL", default="postgres://postgres:password@db:5432/mydatabase"
+        "POSTGRES_URL", default="postgres://postgres:insecure-postgres@db:5432/recdb"
     )
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
