@@ -31,7 +31,7 @@ jobs:
         # run: docker compose run db
 
       - name: Run DB Migrations
-        run: docker compose run --rm web python manage.py migrate
+        run: docker compose run --rm -d web python manage.py migrate
 
       - name: Run Django Tests
         run: docker compose exec web python manage.py test
