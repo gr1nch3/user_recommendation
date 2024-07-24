@@ -30,10 +30,13 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY . /code
 
-# Copy the entry point script and make it executable
+COPY scripts/entrypoint /entrypoint
+RUN sed -i 's/\r$//g' /entrypoint
+RUN chmod +x /entrypoint
+
 COPY scripts/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
 # Set the entry point
-ENTRYPOINT ["/start"]
+ENTRYPOINT ["/entrypoint"]
